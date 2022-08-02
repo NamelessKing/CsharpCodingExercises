@@ -41,9 +41,12 @@ namespace CsharpCodingExercises.codewars.com._5kyu.GreedIsGood
          */
         public static int Score(int[] dice)
         {
-            var x = dice.GroupBy(d => d).ToDictionary(d => d.Key, d => d.ToList().Count);
+            var scors = dice.GroupBy(d => d).ToDictionary(d => d.Key, d => d.ToList().Count);
 
-            return x.Count;
+            foreach (var item in scors)
+            {
+
+            }
         }
     }
 
