@@ -24,8 +24,8 @@ namespace CsharpCodingExercises.codewars.com._5kyu.GreedIsGood
         Three 2's =>  200 points
         One   1   =>  100 points
         One   5   =>   50 point
-        A single die can only be counted once in each roll. For example, 
-        a given "5" can only count as part of a triplet (contributing to the 500 points) or as a single 50 points, but not both in the same roll.
+        A single die can only be counted once in each roll. 
+        For example, a given "5" can only count as part of a triplet (contributing to the 500 points) or as a single 50 points, but not both in the same roll.
 
         Example scoring
 
@@ -41,12 +41,29 @@ namespace CsharpCodingExercises.codewars.com._5kyu.GreedIsGood
          */
         public static int Score(int[] dice)
         {
-            var scors = dice.GroupBy(d => d).ToDictionary(d => d.Key, d => d.ToList().Count);
+            var counters = dice.GroupBy(d => d).ToDictionary(d => d.Key, d => d.ToList().Count);
 
-            foreach (var item in scors)
+            int score = 0;
+            foreach (var c in counters)
             {
+                var triplets = c.Value / 3;
+                var remainders = c.Value % 3;
 
+                if (c.Key == 5)
+                {
+                    score += (triplets * 500) + (remainders * 50);
+                }
+                else if (c.Key == 1) 
+                {
+                    score += (triplets * 1000) + (remainders * 100);
+                }
+                else 
+                {
+                    score += (triplets * c.Key * 100) ;
+                }
             }
+
+            return score;
         }
     }
 

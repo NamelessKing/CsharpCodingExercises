@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CsharpCodingExercises.codewars.com._7kyu
+namespace CsharpCodingExercises.codewars.com._7kyu.ListFilterer
 {
     public class ListFilterer
     {
