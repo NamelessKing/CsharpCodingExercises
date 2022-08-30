@@ -22,7 +22,40 @@ namespace CsharpCodingExercises.codewars.com._5kyu.Rot13
         */
         public static string Rot13(string message)
         {
-            // your code here
+            var alphabetsLower = "abcdefghijklmnopqrstuvwxyz";
+            var alphabetsUpper = alphabetsLower.ToUpper();
+            var alphabets = "";
+            var result = new StringBuilder();
+
+            for (int i = 0; i < message.Length; i++)
+            {
+                alphabets = Char.IsUpper(message[i]) ? alphabetsUpper : alphabetsLower;
+
+                if (alphabets.Contains(message[i]))
+                {
+                    var indOfCurrCharInAlpha = alphabets.IndexOf(message[i]);
+                    var cipheredCharInd = indOfCurrCharInAlpha + 13;
+
+                    if (cipheredCharInd > alphabets.Length)
+                    {
+                        cipheredCharInd = cipheredCharInd - alphabets.Length;
+
+                        var c = alphabets[cipheredCharInd];
+                        result.Append(c);
+
+                    }
+                    else
+                    {
+                        result.Append(alphabets[cipheredCharInd]);
+                    }
+                }
+                else
+                {
+                    result.Append(message[i]);
+                }
+            }
+
+            return result.ToString();
         }
     }
 
