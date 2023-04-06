@@ -2,7 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 
-namespace CsharpCodingExercises.codewars.com._4kyu
+namespace CsharpCodingExercises.codewars.com._4kyu.TopWords
 {
     public class TopWords
     {
